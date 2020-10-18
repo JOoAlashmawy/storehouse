@@ -1,0 +1,103 @@
+<% include ./partials/suppheader %>
+  
+
+<!-- add new product-->
+<div class="newproduct hidden" id="newprod">
+
+  <div class="ui main text container segment">
+      <div class="ui huge header">New Product </div>
+      <form class="ui form action" action="/suppliers/product/add" method="POST">
+          
+          <div class="field">
+              <label>name</label>
+              <input required type="text" minlength ="3" maxlength ="255" placeholder="name" name="product[name]">
+          </div>
+  
+          
+  
+          <div class="field">
+              <label>category</label>
+              <select required name="product[category]" > 
+                  <option value ="Laptop">Laptop</option>
+                  <option value="TV">TV</option>
+                  <option value="Smartphones">Smartphones</option>
+              </select>
+          </div>
+  
+  
+  
+          <div class="field">
+              <label>price</label>
+              <input required type="number" placeholder="price" name="product[price]">
+          </div>
+  
+          <div class="field">
+              <label>quantity</label>
+              <input required type="number" step="1" min="0" max="1000000" placeholder="quantity" name="product[quantity]">
+          </div>
+  
+          <div class="field">
+              <label>description</label>
+              <textarea required name="product[description]"></textarea>
+          </div>
+  
+          <input type="submit" class="ui inverted blue  button">
+  
+  
+      </form>
+  
+  
+  </div>
+</div>
+<!-- decline-->
+<div class ="accepted hidden" id="decline" style="margin: 15% 35%;" >  
+    <div class="massive ui buttons">  
+        <a href= "/suppliers/storing/declined"><button class='massive   ui button'>Declined Adding   </button></a>
+        <div class="or"></div>
+        <a href="/suppliers/pulling/declined"><button class='massive ui blue button'>Declined pulling  </button></a>        
+    </div>
+</div>      
+  
+
+<div id="buttons" >
+        <div class="dashcontainer">
+
+            <a class="cont"> <button class="fluid ui  blue button  " id="btn1" >Add New Product </button> </a>
+          
+            <a class="cont" href="/suppliers/products/pull"><button  class=" fluid ui  blue button ">Pull Product</button></a>
+            <a class="cont" href="/suppliers/products/show"><button  class=" fluid ui  blue button">Show Stored Products</button></a>
+            <a class="cont" href="/suppliers/storing/confirmations"><button  class=" fluid ui  blue button">Accepted Adding Requests</button></a>
+            <a class="cont" ><button id="btn3" class=" fluid ui  blue button ">Declined requests</button></a>
+        </div>
+      </div>
+
+        <script> 
+        // add new product
+          $('#btn1').click(function(){
+          $('#buttons').addClass('hidden');
+          $('#accept').addClass('hidden');
+          $('#decline').addClass('hidden');
+          $('#newprod').removeClass('hidden');
+
+          });
+          // accepted request
+          $('#btn2').click (function(){
+            $('#buttons').addClass('hidden');
+            $('#newprod').addClass('hidden');
+            $('#decline').addClass('hidden');
+            $('#accept').removeClass('hidden');
+          })
+         // decline request
+            $('#btn3').click (function(){
+            $('#buttons').addClass('hidden');
+            $('#newprod').addClass('hidden');
+            $('#accept').addClass('hidden');
+            $('#decline').removeClass('hidden');
+
+          })
+
+        </script>
+ 
+
+
+<% include ./partials/suppfooter %>

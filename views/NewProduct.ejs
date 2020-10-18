@@ -1,0 +1,51 @@
+<% include ./partials/header %>
+<div class="newproduct">
+
+<div class="ui main text container segment">
+    <div class="ui huge header">New Product </div>
+    <form class="ui form action" action="/suppliers/product/add" method="POST">
+        
+        <div class="field">
+            <label>name</label>
+            <input required type="text" minlength ="3" maxlength ="255" placeholder="name" name="product[name]">
+        </div>
+
+        
+
+        <div class="field">
+            <label>category</label>
+            <select required name="product[category]" > 
+                <option value ="Laptop">Laptop</option>
+                <option value="TV">TV</option>
+                <option value="Smartphones">Smartphones</option>
+            </select>
+        </div>
+
+
+
+        <div class="field">
+            <label>price</label>
+            <input required type="number" placeholder="price" name="product[price]">
+        </div>
+
+        <div class="field">
+            <label>quantity</label>
+            <input required type="number" step="1" min="0" max="1000000" placeholder="quantity" name="product[quantity]">
+        </div>
+
+        <div class="field">
+            <label>description</label>
+            <textarea required name="product[description]"></textarea>
+        </div>
+
+        <input type="submit" class="ui inverted blue  button">
+
+
+    </form>
+
+
+</div>
+</div>
+
+
+<% include ./partials/footer %>
